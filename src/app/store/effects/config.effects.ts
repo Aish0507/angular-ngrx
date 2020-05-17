@@ -6,16 +6,16 @@ import { of } from 'rxjs';
 
 import { IConfig } from '../../models/config.interface';
 import { ConfigService } from './../../services/config.service';
-import { EConfigActions, GetConfig, GetConfigSuccess } from '../actions/config.actions';
+import { EConfigActions, GetUserAccess, GetUserAccessSuccess } from '../actions/config.actions';
 
 @Injectable()
 export class ConfigEffects {
   @Effect()
-  getConfig$ = this._actions$.pipe(
-    ofType<GetConfig>(EConfigActions.GetConfig),
-    switchMap(() => this._configService.getConfig()),
+  getUserAccess$ = this._actions$.pipe(
+    ofType<GetUserAccess>(EConfigActions.GetUserAccess),
+    switchMap(() => this._configService.getUserAccess()),
     switchMap((config: IConfig) => {
-      return of(new GetConfigSuccess(config));
+      return of(new GetUserAccessSuccess(config));
     })
   );
 

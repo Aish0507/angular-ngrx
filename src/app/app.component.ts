@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 
 import { IAppState } from './store/state/app.state';
-import { GetConfig } from './store/actions/config.actions';
+import { GetUserAccess } from './store/actions/config.actions';
 import { selectConfig } from './store/selectors/config.selector';
+import { UpdateEvent } from './store/actions/event.actions';
 
 @Component({
   selector: 'app-root',
@@ -17,6 +18,9 @@ export class AppComponent implements OnInit {
   constructor(private _store: Store<IAppState>) {}
 
   ngOnInit() {
-    this._store.dispatch(new GetConfig());
+    this._store.dispatch(new GetUserAccess());
+  }
+  update() {
+    this._store.dispatch(new UpdateEvent([{name: `Shri-${Math.random() * 100}`, id: 3}]));
   }
 }

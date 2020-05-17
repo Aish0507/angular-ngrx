@@ -1,13 +1,16 @@
 <nav class="navbar d-flex">
   <a class="navbar-brand"
     routerLink="/">
-    Angular - NGRX / {{ (config$ | async)?.adminName }}
+    Angular - NGRX / {{ (config$ | async)?.permissions[0] }}
   </a>
   <div class="d-flex justify-content-end">
     <ul class="d-flex navbar-nav flex-row align-items-center">
       <li class="nav-item">
         <a routerLink="/users"
           routerLinkActive="active">Users</a>
+          <a class="ml-2" routerLink="/events"
+          routerLinkActive="active">Events</a>
+          <button class="btn btn-primary" (click)="update()">Update Event</button>
       </li>
     </ul>
   </div>

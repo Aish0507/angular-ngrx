@@ -17,6 +17,7 @@ import { UsersComponent as UsersContainerComponent } from './containers/users/us
 import { UsersComponent } from './components/users/users.component';
 import { UserComponent } from './containers/user/user.component';
 import { UserDetailsComponent } from './components/user-details/user-details.component';
+import { HttpCacheInterceptorModule } from '@ngneat/cashew';
 
 @NgModule({
   declarations: [
@@ -32,10 +33,27 @@ import { UserDetailsComponent } from './components/user-details/user-details.com
     StoreModule.forRoot(appReducers),
     EffectsModule.forRoot([UserEffects, ConfigEffects]),
     StoreRouterConnectingModule.forRoot({ stateKey: 'router' }),
-    !environment.production ? StoreDevtoolsModule.instrument() : [],
-    AppRoutingModule
+    !environment.production ? StoreDevtoolsModule.instrument({
+      name: 'NgRx Book Store DevTools',
+      logOnly: true,
+      features: {
+        pause: true, // start/pause recording of dispatched actions
+        lock: true, // lock/unlock dispatching actions and side effects
+        persist: true, // persist states on page reloading
+        export: true, // export history of actions in a file
+        import: true, // import history of actions from a file
+        jump: true, // jump back and forth (time travelling)
+        skip: true, // skip (cancel) actions
+        reorder: true, // drag and drop actions in the history list
+        dispatch: true, // dispatch custom actions or action creators
+        test: true // generate tests for the selected actions
+      },
+      maxAge: 25
+    }) : StoreDevtoolsModule.instrument({ maxAge: 25 }),
+    AppRoutingModule,
+    HttpCacheInterceptorModule.forRoot()
   ],
   providers: [UserService],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

@@ -6,7 +6,7 @@ export const configReducers = (
   action: ConfigActions
 ): IConfigState => {
   switch (action.type) {
-    case EConfigActions.GetConfigSuccess: {
+    case EConfigActions.GetUserAccessSuccess: {
       return {
         ...state,
         config: action.payload

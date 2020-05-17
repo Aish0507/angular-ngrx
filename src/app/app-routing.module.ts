@@ -6,6 +6,7 @@ import { UserComponent } from './containers/user/user.component';
 
 const routes: Routes = [
   { path: 'users', component: UsersComponent },
+  { path: 'events', loadChildren: './components/events/events.module#EventsModule' },
   { path: 'user/:id', component: UserComponent },
   { path: '', redirectTo: '/users', pathMatch: 'full' }
 ];

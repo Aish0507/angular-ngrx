@@ -13,7 +13,7 @@ export class ConfigService {
 
   constructor(private _http: HttpClient) { }
 
-  getConfig(): Observable<IConfig> {
+  getUserAccess(): Observable<IConfig> {
     return this._http.get<IConfig>(this.configUrl);
   }
 }

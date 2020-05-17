@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 
 import { environment } from '../../environments/environment';
 import { IUserHttp } from '../models/http-models/user-http.interface';
-
+import { withCache } from '@ngneat/cashew';
 @Injectable()
 export class UserService {
   usersUrl = `${environment.apiUrl}users.json`;

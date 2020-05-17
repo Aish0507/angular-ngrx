@@ -3,20 +3,20 @@ import { Action } from '@ngrx/store';
 import { IConfig } from '../../models/config.interface';
 
 export enum EConfigActions {
-  GetConfig = '[Config] Get Config',
-  GetConfigSuccess = '[Config] Get Config Success'
+  GetUserAccess = '[Access] Get User Access',
+  GetUserAccessSuccess = '[Access] Get User Access Success'
 }
 
-export class GetConfig implements Action {
-  public readonly type = EConfigActions.GetConfig;
+export class GetUserAccess implements Action {
+  public readonly type = EConfigActions.GetUserAccess;
 }
 
-export class GetConfigSuccess implements Action {
-  public readonly type = EConfigActions.GetConfigSuccess;
+export class GetUserAccessSuccess implements Action {
+  public readonly type = EConfigActions.GetUserAccessSuccess;
   constructor(public payload: IConfig) {}
 }
 
 export type ConfigActions =
-  | GetConfig
-  | GetConfigSuccess;
+  | GetUserAccess
+  | GetUserAccessSuccess;
 
